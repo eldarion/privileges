@@ -1,5 +1,5 @@
 VERSION = (0, 1, 0, "a", 1) # following PEP 386
-DEV_N = 1
+DEV_N = 2
 POST_N = 0
 
 
@@ -31,6 +31,8 @@ def register(func):
 
 
 def has_privilege(user, privilege):
+    if user.is_anonymous():
+        return False
     
     for handler in handlers:
         if handler(user, privilege):
