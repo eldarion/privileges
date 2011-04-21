@@ -2,7 +2,7 @@
 privileges
 ==========
 
-``privileges`` is an extensible Django app that provides ....
+``privileges`` makes segmenting authenticated users easy and extensible.
 
 
 Overview
