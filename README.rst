@@ -293,3 +293,8 @@ the login url::
     def add_widget(request):
         ....
 
+
+Authentication Backend
+**********************
+
+....
