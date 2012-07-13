@@ -33,10 +33,9 @@ model that using ``idios`` and end up with something that looks like::
 
 You will need to add and register a privileges handler::
 
-    import privileges
-    
     from idios.models import ProfileBase
     from privileges.models import Privilege
+    from privileges.registration import registry
     
     
     class Persona(ProfileBase):
@@ -85,10 +84,11 @@ You will need to add and register a privileges handler::
         return False
     
     
-    privileges.register(has_privilege)
+    registry.register(has_privilege)
 
 
-As you can see above, I added ``has_privilege`` and registered it with ``privileges.register``.
+As you can see above, I added ``has_privilege`` and registered it with ``registry.register``.
+
 The handler that you register can be any callable that takes two parameters, a
 user object, and a string that matches the label of one of the privilege objects
 in your database.
@@ -142,11 +142,10 @@ with a certain set of privileges. In addition, we write and register the
     
     from brabeion import badges
     
-    import privileges
-    
     from glue.badges import ProfileCompletionBadge
     from personas.models import DefaultPersona
     from privileges.models import Privilege
+    from privileges.registration import registry
     
     
     BADGE_CHOICES = [
@@ -185,7 +184,7 @@ with a certain set of privileges. In addition, we write and register the
     
     badges.register(ProfileCompletionBadge)
     post_save.connect(handle_saved_persona, sender=DefaultPersona)
-    privileges.register(has_privilege)
+    registry.register(has_privilege)
 
 
 As you will notice from the code above, the implementation of the handler is
