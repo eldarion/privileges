@@ -2,8 +2,6 @@
 privileges
 ==========
 
-``privileges`` makes segmenting authenticated users easy and extensible.
-
 Unlike Django permissions, ``privileges`` is not tied to operations on 
 individual models. It operates at a higher level of abstraction and is instead
 concerned more with providing the site developer complete freedom in determining
@@ -24,3 +22,21 @@ There is a model that stores the named privileges which are nothing more than
 named slugs. The records carry no special meeting to ``privileges`` in isolation
 but depend on the site developer to impart meaning through reference in his
 site.
+
+Development
+-----------
+
+The source repository can be found at https://github.com/eldarion/privileges
+
+
+Contents
+========
+
+.. toctree::
+ :maxdepth: 1
+
+ changelog
+ installation
+ templatetags
+ usage
+ 
