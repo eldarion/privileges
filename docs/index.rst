@@ -39,5 +39,6 @@ Contents
  installation
  templatetags
  decorators
+ grants
  usage
  
