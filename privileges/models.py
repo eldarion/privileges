@@ -11,7 +11,7 @@ from privileges.registration import registry
 
 
 grants = import_module(
-    getattr(settings, "DELEGATION_GRANTS_MODULE", "delegation.grants")
+    getattr(settings, "PRIVILEGES_GRANTS_MODULE", "delegation.grants")
 )
 
 
