@@ -38,5 +38,6 @@ Contents
  changelog
  installation
  templatetags
+ decorators
  usage
  
