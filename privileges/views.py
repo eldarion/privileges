@@ -8,7 +8,7 @@ from privileges.forms import GrantForm
 from privileges.models import Grant
 
 
-def list(request, username):
+def grant_list(request, username):
     
     user = get_object_or_404(User, username=username)
     if request.user != user and not request.user.is_superuser:
@@ -18,11 +18,11 @@ def list(request, username):
         form = GrantForm(request.POST, user=request.user)
         if form.is_valid():
             form.save()
-            redirect("delegation_list", username=username)
+            redirect("privileges_grant_list", username=username)
     else:
         form = GrantForm(user=request.user)
     
-    return render_to_response("delegation/list.html", {
+    return render_to_response("privileges/grant_list.html", {
         "grants_given": Grant.objects.filter(grantor=user),
         "grants_received": Grant.objects.filter(grantee=user),
         "grant_user": user,
@@ -30,7 +30,7 @@ def list(request, username):
     }, context_instance=RequestContext(request))
 
 
-def detail(request, username, pk):
+def grant_detail(request, username, pk):
     
     user = get_object_or_404(User, username=username)
     if request.user != user and not request.user.is_superuser:
@@ -40,7 +40,7 @@ def detail(request, username, pk):
     if grant.grantor != user and grant.grantee != user:
         return Http404()
     
-    return render_to_response("delegation/detail.html", {
+    return render_to_response("privileges/grant_detail.html", {
         "grant": grant,
         "grant_user": user
     }, context_instance=RequestContext(request))
