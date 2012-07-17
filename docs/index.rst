@@ -28,6 +28,11 @@ Development
 
 The source repository can be found at https://github.com/eldarion/privileges
 
+Sponsorship
+-----------
+
+development sponsored by `Midwest Communications`_
+
 
 Contents
 ========
@@ -42,3 +47,5 @@ Contents
  grants
  usage
  
+
+.. _`Midwest Communications`: http://mwcradio.com/

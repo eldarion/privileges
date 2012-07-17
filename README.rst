@@ -24,3 +24,12 @@ There is a model that stores the named privileges which are nothing more than
 named slugs. The records carry no special meeting to ``privileges`` in isolation
 but depend on the site developer to impart meaning through reference in his
 site.
+
+
+Sponsorship
+-----------
+
+development sponsored by `Midwest Communications`_
+
+
+.. _`Midwest Communications`: http://mwcradio.com/
