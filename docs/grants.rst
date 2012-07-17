@@ -24,17 +24,23 @@ enabling granting is::
     url(r"^privileges/", include("privileges.urls")),
     ...
 
-This will add two urls to your url configuration ``privileges_grant_list``
-and ``privileges_grant_detail`` that both take a username as a keyword
-argument. You might want to link to this pages under an account settings
-interface for the user in your site somewhere.
+This will add four urls to your url configuration:
+
+* ``privileges_grant_list``
+* ``privileges_grant_create``
+* ``privileges_grant_update``
+* ``privileges_grant_delete``
+
+These all take ``username`` as a kwarg and the update and delete urls also take
+the ``pk`` of the grant objecct. You might want to link to this pages under an
+account settings interface for the user in your site somewhere.
 
 
 privileges_grant_list
 ^^^^^^^^^^^^^^^^^^^^^
 
 :kwargs: username
-:context: grants_given, grants_received, grant_user, form
+:context: grants_list, username
 :template: ``privileges/grant_list.html``
 
 This view will display the user's grants and the requesting user has to
@@ -42,17 +48,35 @@ either match the usenrame or be a superuser. It will render a template
 stored at ``privileges/grant_list.html`` and a default template that
 exiends ``site_base.html`` has been included in this package.
 
-This view also handles the creation of new grants.
+
+privileges_grant_create
+^^^^^^^^^^^^^^^^^^^^^^^
+
+:kwargs: username
+:context: form, username
+:template: ``privileges/grant_form.html``
+
+This view handles the form display and POST handling to create new grants.
 
 
-privileges_grant_detail
+privileges_grant_update
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 :kwargs: username, pk
-:context: grant, grant_user
-:template: ``privileges/grant_detail.html``
+:context: form, grant, username
+:template: ``privileges/grant_form.html``
 
-This view displays the detail for a particular grant of a user.
+This view handles the form display and POST handling to update existing grants.
+
+
+privileges_grant_delete
+^^^^^^^^^^^^^^^^^^^^^^^
+
+:kwargs: username, pk
+:context: form, grant, username
+:template: ``privileges/grant_confirm_delete.html``
+
+This view handles the form display and POST handling to delete grants.
 
 
 Customization
