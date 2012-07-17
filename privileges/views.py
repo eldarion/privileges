@@ -2,8 +2,10 @@ import urlparse
 
 from functools import wraps
 
+from django.db.models import Q
 from django.conf import settings
 from django.utils.decorators import available_attrs, method_decorator
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from django.contrib.auth import REDIRECT_FIELD_NAME
 
@@ -44,6 +46,18 @@ class UsernameContextMixin(object):
             "username": self.kwargs.get("username")
         })
         return context
+
+
+@cbv_decorator(owner_required)
+class GrantListView(UsernameContextMixin, ListView):
+    model = Grant
+    
+    def get_queryset(self):
+        username = self.kwargs["username"]
+        return super(GrantListView, self).get_queryset().filter(
+            Q(grantor__username=username) | Q(grantee__username=username)
+        )
+
     
     
 

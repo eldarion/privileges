@@ -1,0 +1,53 @@
+{% extends "privileges/base.html" %}
+
+
+{% block body %}
+    <header class="jumbotron subhead" id="overview">
+      <h1>Grants</h1>
+      <p class="lead">These are all the grants for {{ username }}.</p>
+    </header>
+    
+    <p>
+        <a href="" class="btn btn-primary">Create Grant</a>
+    </p>
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Grantor</th>
+                <th>Grantee</th>
+                <th>Effective Period</th>
+                <th>Privilege</th>
+                <th>Delegated Count</th>
+                <th>Created</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for grant in grant_list %}
+                <tr>
+                    <td>
+                        <a href="{{ delete_url }}" class="btn btn-mini btn-danger">
+                            Delete
+                        </a>
+                        <a href="{{ edit_url }}" class="btn btn-mini">
+                            Edit
+                        </a>
+                    </td>
+                    <td>{{ grant.grantor }}</td>
+                    <td>{{ grant.grantee }}</td>
+                    <td>
+                        {% if grant.end %}
+                            {{ grant.start }} through {{ grant.end }}
+                        {% else %}
+                            Starts {{ grant.start}}
+                        {% endif %}
+                    </td>
+                    <td>{{ grant.privilege }}</td>
+                    <td>{{ grant.redelegate_count }}</td>
+                    <td>{{ grant.date_created }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
