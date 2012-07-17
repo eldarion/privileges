@@ -1,0 +1,3 @@
+# For development/testing
+Django==1.4
+django-nose==1.1
