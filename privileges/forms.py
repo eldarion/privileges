@@ -1,6 +1,7 @@
 from django import forms
 
-from privileges.models import Grant, grants
+from privileges.grants import grantee_list, privilege_list
+from privileges.models import Grant
 
 
 class GrantForm(forms.ModelForm):
@@ -10,11 +11,11 @@ class GrantForm(forms.ModelForm):
         super(GrantForm, self).__init__(*args, **kwargs)
         self.fields["grantee"].choices = [
             (x.pk, x)
-            for x in grants.grantee_list(grantor=self.user)
+            for x in grantee_list(grantor=self.user)
         ]
         self.fields["privilege"].choices = [
             (x.pk, x.verbose_name)
-            for x in grants.privilege_list(grantor=self.user)
+            for x in privilege_list(grantor=self.user)
         ]
     
     class Meta:

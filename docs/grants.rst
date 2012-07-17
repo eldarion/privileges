@@ -59,13 +59,13 @@ Customization
 -------------
 
 There are two callables that you can define in your site and configure
-the settings.PRIVILEGES_GRANTS_MODULE setting to point to::
+via settings. They currently default to::
 
-    PRIVILEGES_GRANTS_MODULE = "myapp.grants"
+    PRIVILEGES_PRIVILEGE_LIST_CALLABLE = "privileges.grants._privilege_list"
+    PRIVILEGES_GRANTEE_LIST_CALLABLE = "privileges.grants._grantee_list"
 
-This should be a module that is importable within the context of your site
-that contains two collables nameed ``privilege_list`` and ``grantee_list``.
-Futhermore, they are expected to have the following argspecs::
+These should be callables that are importable within the context of your
+site. Futhermore, they are expected to have the following argspecs::
 
     privilege_list(grantor, grantee=None)
     

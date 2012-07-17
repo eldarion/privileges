@@ -1,18 +1,11 @@
 import datetime
 
-from django.conf import settings
 from django.db import models
 from django.db.models import Q
-from django.utils.importlib import import_module
 
 from django.contrib.auth.models import User
 
 from privileges.registration import registry
-
-
-grants = import_module(
-    getattr(settings, "PRIVILEGES_GRANTS_MODULE", "privileges.grants")
-)
 
 
 class Privilege(models.Model):
