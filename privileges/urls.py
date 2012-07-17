@@ -13,5 +13,9 @@ urlpatterns = patterns(
         views.GrantCreateView.as_view(),
         name="privileges_grant_create"
     ),
+    url(r"^(?P<username>\w+)/(?P<pk>\d+)/update/$",
+        views.GrantUpdateView.as_view(),
+        name="privileges_grant_update"
+    ),
     )
 )

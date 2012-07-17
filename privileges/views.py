@@ -79,6 +79,23 @@ class GrantCreateView(UsernameContextMixin, CreateView):
         )
 
 
+@cbv_decorator(owner_required)
+class GrantUpdateView(UsernameContextMixin, UpdateView):
+    model = Grant
+    form_class = GrantForm
     
+    def get_form_kwargs(self):
+        kwargs = super(GrantUpdateView, self).get_form_kwargs()
+        kwargs.update({
+            "user": self.request.user
+        })
+        return kwargs
     
+    def get_success_url(self):
+        return reverse(
+            "privileges_grant_list",
+            kwargs={"username": self.request.user.username}
+        )
+
+
     
