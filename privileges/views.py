@@ -98,4 +98,14 @@ class GrantUpdateView(UsernameContextMixin, UpdateView):
         )
 
 
+@cbv_decorator(owner_required)
+class GrantDeleteView(UsernameContextMixin, DeleteView):
+    model = Grant
     
+    def get_success_url(self):
+        return reverse(
+            "privileges_grant_list",
+            kwargs={"username": self.request.user.username}
+        )
+
+

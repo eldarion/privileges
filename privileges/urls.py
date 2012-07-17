@@ -17,5 +17,8 @@ urlpatterns = patterns(
         views.GrantUpdateView.as_view(),
         name="privileges_grant_update"
     ),
+    url(r"^(?P<username>\w+)/(?P<pk>\d+)/delete/$",
+        views.GrantDeleteView.as_view(),
+        name="privileges_grant_delete"
     )
 )

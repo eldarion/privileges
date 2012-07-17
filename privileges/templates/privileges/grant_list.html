@@ -25,6 +25,7 @@
         </thead>
         <tbody>
             {% for grant in grant_list %}
+                {% url privileges_grant_delete username=username pk=grant.pk as delete_url %}
                 {% url privileges_grant_update username=username pk=grant.pk as edit_url %}
                 <tr>
                     <td>

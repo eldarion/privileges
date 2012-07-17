@@ -1,0 +1,53 @@
+{% extends "privileges/base.html" %}
+
+{% load bootstrap_tags %}
+
+
+{% block body %}
+    <header class="jumbotron subhead" id="overview">
+      <h1>Grant Deletion</h1>
+      <p class="lead">Are you sure you really want to delete the grant?</p>
+    </header>
+    
+    <table class="table">
+        <tr>
+            <th>Grantee</th><td>{{ grant.grantee }}</td>
+        </tr>
+        <tr>
+            <th>Grantor</th><td>{{ grant.grantor }}</td>
+        </tr>
+        <tr>
+            <th>Effective Period</th>
+            <td>
+                {% if grant.end %}
+                    {{ grant.start }} through {{ grant.end }}
+                {% else %}
+                    Starts {{ grant.start}}
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>Privilege</th><td>{{ grant.privilege }}</td>
+        </tr>
+        <tr>
+            <th>Delegation Count</th><td>{{ grant.redelegate_count }}</td>
+        </tr>
+        <tr>
+            <th>Created</th><td>{{ grant.date_created }}</td>
+        </tr>
+    </table>
+
+    <form class="form" action="
+    {% url privileges_grant_delete username=username pk=grant.pk %}" method="post">
+        {% csrf_token %}
+        {{ form|as_bootstrap }}
+        <div class="form-actions">
+            <a class="btn" href="{% url privileges_grant_list username=username %}">
+                Cancel
+            </a>
+            <button type="submit" class="btn btn-danger">
+                Delete
+            </button>
+        </div>
+    </form>
+{% endblock %}
