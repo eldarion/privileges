@@ -36,7 +36,14 @@ def cbv_decorator(decorator):
     return _decorator
 
 
+class UsernameContextMixin(object):
     
+    def get_context_data(self, **kwargs):
+        context = super(UsernameContextMixin, self).get_context_data(**kwargs)
+        context.update({
+            "username": self.kwargs.get("username")
+        })
+        return context
     
     
 
