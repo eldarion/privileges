@@ -1,0 +1,35 @@
+{% extends "privileges/base.html" %}
+
+{% load bootstrap_tags %}
+
+
+{% block body %}
+
+{% if form.instance.pk %}
+    {% url privileges_grant_update username=username pk=form.instance.pk as post_url %}
+    <header class="jumbotron subhead" id="overview">
+      <h1>Grant Update</h1>
+      <p class="lead">Use this form to update the existing grant.</p>
+    </header>
+{% else %}
+    {% url privileges_grant_create username=username as post_url %}
+    <header class="jumbotron subhead" id="overview">
+      <h1>Grant Create</h1>
+      <p class="lead">Use this form to create a new grant.</p>
+    </header>
+{% endif %}
+
+<form class="form" action="{{ post_url }}" method="post">
+    {% csrf_token %}
+    {{ form|as_bootstrap }}
+    <div class="form-actions">
+        <a class="btn" href="{% url privileges_grant_list username=username %}">
+            Cancel
+        </a>
+        <button type="submit" class="btn btn-primary">
+            Save
+        </button>
+    </div>
+</form>
+
+{% endblock %}

@@ -4,6 +4,7 @@ from functools import wraps
 
 from django.db.models import Q
 from django.conf import settings
+from django.core.urlresolvers import reverse
 from django.utils.decorators import available_attrs, method_decorator
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
@@ -58,8 +59,24 @@ class GrantListView(UsernameContextMixin, ListView):
             Q(grantor__username=username) | Q(grantee__username=username)
         )
 
+
+@cbv_decorator(owner_required)
+class GrantCreateView(UsernameContextMixin, CreateView):
+    model = Grant
+    form_class = GrantForm
     
+    def get_form_kwargs(self):
+        kwargs = super(GrantCreateView, self).get_form_kwargs()
+        kwargs.update({
+            "user": self.request.user
+        })
+        return kwargs
     
+    def get_success_url(self):
+        return reverse(
+            "privileges_grant_list",
+            kwargs={"username": self.request.user.username}
+        )
 
 
     
