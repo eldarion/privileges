@@ -17,12 +17,12 @@ model that using ``idios`` and end up with something that looks like::
     
     
     class Persona(ProfileBase):
-    
+        
         name = models.CharField(max_length=50, null=True, blank=True)
     
     
     class MemberPersona(Persona):
-    
+        
         expired = models.BooleanField(default=False)
     
     
