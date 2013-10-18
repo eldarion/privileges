@@ -1,6 +1,6 @@
 from django import template
 
-import privileges
+from privileges.registration import registry
 
 
 register = template.Library()
@@ -29,7 +29,7 @@ class CheckPrivilegeNode(template.Node):
     def render(self, context):
         privilege = self.privilege.resolve(context)
         user = self.user.resolve(context)
-        context[self.varname] = privileges.has_privilege(user, privilege)
+        context[self.varname] = registry.has_privilege(user, privilege)
         return ""
 
 
