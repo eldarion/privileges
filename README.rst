@@ -2,6 +2,22 @@
 privileges
 ==========
 
+.. image:: https://img.shields.io/travis/eldarion/privileges.svg
+    :target: https://travis-ci.org/eldarion/privileges
+
+.. image:: https://img.shields.io/coveralls/eldarion/privileges.svg
+    :target: https://coveralls.io/r/eldarion/privileges
+
+.. image:: https://img.shields.io/pypi/dm/privileges.svg
+    :target:  https://pypi.python.org/pypi/privileges/
+
+.. image:: https://img.shields.io/pypi/v/privileges.svg
+    :target:  https://pypi.python.org/pypi/privileges/
+
+.. image:: https://img.shields.io/badge/license-BSD-blue.svg
+    :target:  https://pypi.python.org/pypi/privileges/
+
+
 ``privileges`` makes segmenting authenticated users easy and extensible.
 
 Unlike Django permissions, ``privileges`` is not tied to operations on 
