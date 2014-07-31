@@ -8,7 +8,7 @@ from privileges.models import Privilege
 
 def import_obj(name):
     dot = name.rindex('.')
-    mod_name, obj_name = name[:dot], name[dot+1:]
+    mod_name, obj_name = name[:dot], name[dot + 1:]
     __import__(mod_name)
     return getattr(sys.modules[mod_name], obj_name)
 
