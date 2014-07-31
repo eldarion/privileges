@@ -5,7 +5,7 @@ from privileges.models import Grant
 
 
 class GrantForm(forms.ModelForm):
-    
+
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop("user")
         super(GrantForm, self).__init__(*args, **kwargs)
@@ -17,7 +17,7 @@ class GrantForm(forms.ModelForm):
             (x.pk, x.verbose_name)
             for x in privilege_list(grantor=self.user)
         ]
-    
+
     class Meta:
         model = Grant
         fields = [
@@ -26,7 +26,7 @@ class GrantForm(forms.ModelForm):
             "end",
             "privilege"
         ]
-    
+
     def save(self, commit=True):
         self.instance.grantor = self.user
         super(GrantForm, self).save(commit=commit)

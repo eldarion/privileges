@@ -2,7 +2,7 @@
 privileges
 ==========
 
-Unlike Django permissions, ``privileges`` is not tied to operations on 
+Unlike Django permissions, ``privileges`` is not tied to operations on
 individual models. It operates at a higher level of abstraction and is instead
 concerned more with providing the site developer complete freedom in determining
 who can do what. There certainly is some overlap with the built in permissions
@@ -46,6 +46,6 @@ Contents
  decorators
  grants
  usage
- 
+
 
 .. _`Midwest Communications`: http://mwcradio.com/

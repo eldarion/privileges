@@ -11,7 +11,7 @@ so::
     {% load privileges_tags %}
     ....
     {% check_privilege 'foo_feature_enabled' for user as has_foo %}
-    
+
     {% if has_foo %}
         ....
     {% endif %}

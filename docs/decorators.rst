@@ -14,8 +14,8 @@ view as the specified privilege, otherwise it will redirect, by default, to
 the login url::
 
     from privileges.decorators import privilege_required
-    
-    
+
+
     @privilege_required("widget_management_feature_enabled")
     def add_widget(request):
         ....

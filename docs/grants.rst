@@ -92,7 +92,7 @@ These should be callables that are importable within the context of your
 site. Futhermore, they are expected to have the following argspecs::
 
     privilege_list(grantor, grantee=None)
-    
+
     grantee_list(grantor, privilege=None)
 
 Where ``grantor`` and ``grantee`` are ``auth.User`` objects, and ``privilege``
@@ -106,4 +106,3 @@ These functions currently return all privileges and all users (excluding
 only the ``grantor`` from the list), so it is wide open by default, and is
 up to you to implement the business rules for how these lists should be
 constrained.
-

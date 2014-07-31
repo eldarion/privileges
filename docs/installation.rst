@@ -23,4 +23,3 @@ using the ``/admin/`` and then as you make changes or add new ones, update your
     ./manage.py dumpdata privileges --indent=4
 
 Capture the output and merge it into your ``initial_data.json``.
-

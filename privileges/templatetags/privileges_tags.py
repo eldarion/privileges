@@ -7,7 +7,7 @@ register = template.Library()
 
 
 class CheckPrivilegeNode(template.Node):
-    
+
     @classmethod
     def handle_token(cls, parser, token):
         bits = token.split_contents()
@@ -20,12 +20,12 @@ class CheckPrivilegeNode(template.Node):
             parser.compile_filter(bits[3]),
             bits[5]
         )
-    
+
     def __init__(self, privilege, user, varname):
         self.privilege = privilege
         self.user = user
         self.varname = varname
-    
+
     def render(self, context):
         privilege = self.privilege.resolve(context)
         user = self.user.resolve(context)
